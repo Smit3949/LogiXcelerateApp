@@ -1,10 +1,14 @@
 import * as React from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import HouseSection from '../components/HouseSection';
 import SearchFilterContainer from '../components/SearchFilterContainer';
 import SectionWithComments from '../components/SectionWithComments';
 import SectionForm from '../components/SectionForm';
 import {Color} from '../GlobalStyles';
+import {NativeRouter, Route, Link, Routes} from 'react-router-native';
+import TaskSwipeScreen from './TaskSwipeScreen';
+
+const About = () => <Text>About</Text>;
 
 const ShipmentListViewTopNavigat = () => {
   return (
@@ -13,11 +17,12 @@ const ShipmentListViewTopNavigat = () => {
         <View style={styles.frameParent}>
           <View style={styles.statusBarParent}>
             <SearchFilterContainer />
-
-            <SectionWithComments
-              mblNumber="MBL # HLCUBO12312BAXD9"
-              shipmentNumber="JOB/23-24/0000001"
-            />
+            <Link to="/shipment">
+              <SectionWithComments
+                mblNumber="MBL # HLCUBO12312BAXD9"
+                shipmentNumber="JOB/23-24/0000001"
+              />
+            </Link>
             {/* <SectionForm /> */}
             <SectionWithComments
               mblNumber="MBL # HWEUBO12312BAXD9"

@@ -3,6 +3,8 @@ import React from 'react';
 import ShipmentListViewTopNavigat from './screens/ShipmentListViewTopNavigat';
 import {GET_USER_PROFILE} from './utils/graphql/user';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {NativeRouter, Route, Routes} from 'react-router-native';
+import TaskSwipeScreen from './screens/TaskSwipeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,12 +21,14 @@ export default function OperationLayout() {
 
   return (
     <>
-      {/* <Stack.Screen
-        name="ShipmentListViewTopNavigat"
-        component={ShipmentListViewTopNavigat}
-        options={{headerShown: false}}
-      /> */}
-      <ShipmentListViewTopNavigat />
+      <NativeRouter>
+        <Routes>
+          <Route path="/shipment" element={<TaskSwipeScreen />} />
+          <Route path="/" element={<ShipmentListViewTopNavigat />} />
+        </Routes>
+      </NativeRouter>
+
+      {/* <ShipmentListViewTopNavigat /> */}
     </>
   );
 }

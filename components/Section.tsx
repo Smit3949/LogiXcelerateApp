@@ -10,14 +10,14 @@ const Section = () => {
   return (
     <View style={styles.frameParent}>
       <View style={styles.statusBarParent}>
-        <StatusContainer
+        {/* <StatusContainer
           batteryAlignSelf="unset"
           batteryHeight={44}
           borderAlignSelf="unset"
           borderWidth={428}
-        />
+        /> */}
         <View style={styles.frameGroup}>
-          <Section2 />
+          {/* <Section2 /> */}
           <HouseSection1 />
         </View>
       </View>

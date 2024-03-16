@@ -1,7 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import messaging from '@react-native-firebase/messaging';
 
-import notifee, {EventType} from '@notifee/react-native';
+import notifee, {
+  AndroidCategory,
+  AndroidImportance,
+  EventType,
+} from '@notifee/react-native';
 
 // export async function requestUserPermission() {
 //   const authStatus = await messaging().requestPermission();
@@ -198,6 +202,14 @@ async function onDisplayNotification(title, body, data) {
       // pressAction is needed if you want the notification to open the app when pressed
       pressAction: {
         id: 'default',
+      },
+      fullScreenAction: {
+        // For custom component:
+        category: AndroidCategory.CALL,
+        // Recommended to set importance to high
+        importance: AndroidImportance.HIGH,
+        id: '123123',
+        mainComponent: 'NavBar',
       },
     },
   });

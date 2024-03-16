@@ -1,13 +1,12 @@
 import * as React from 'react';
 import {Text, StyleSheet, View} from 'react-native';
-// import {Image} from 'expo-image';
 import {FontSize, FontFamily, Color, Padding} from '../GlobalStyles';
 
 const Section2 = () => {
   return (
     <View style={[styles.frameParent, styles.frameFlexBox]}>
       <View style={styles.frame}>
-        <Text style={styles.bars}>bars</Text>
+        <Text style={styles.bars}>Shipmnts</Text>
       </View>
       <View style={[styles.frame1, styles.frameFlexBox]}>
         {/* <Image
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
   },
   frame: {
     flex: 1,
-    height: 20,
+    height: 22,
     overflow: 'hidden',
   },
   vuesaxlinearnotificationBinIcon: {

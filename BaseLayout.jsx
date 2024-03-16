@@ -9,13 +9,16 @@ import {useAuth0} from 'react-native-auth0';
 import OperationLayout from './OperationLayout';
 import {BatchHttpLink} from '@apollo/client/link/batch-http';
 import {setContext} from '@apollo/client/link/context';
+import NavigationBar from './screens/NavBar';
+import {NavigationContainer} from '@react-navigation/native';
+import {Route, Router} from 'react-router-native';
 
 export default function BaseLayout() {
   const [apolloClient, setApolloClient] = useState();
   const {authorize, getCredentials} = useAuth0();
 
   const httpLink = new BatchHttpLink({
-    uri: 'http://192.168.1.8:3500/graphql',
+    uri: 'http://192.168.1.24:3500/graphql',
     credentials: 'same-origin',
     batchMax: 5,
     batchInterval: 30,
@@ -79,7 +82,9 @@ export default function BaseLayout() {
   }
   return (
     <ApolloProvider client={apolloClient}>
-      <OperationLayout />
+      <NavigationContainer>
+        <OperationLayout />
+      </NavigationContainer>
     </ApolloProvider>
   );
 }

@@ -6,52 +6,14 @@ import HouseSection2 from '../components/HouseSection2';
 import SectionInvoicesStatus from '../components/SectionInvoicesStatus';
 import DocumentSection from '../components/DocumentSection';
 import {Color, FontFamily, FontSize, Border, Padding} from '../GlobalStyles';
+import Section2 from '../components/Section2';
 
 const Documents = () => {
   return (
     <View style={styles.documents}>
       <View style={[styles.frameParent, styles.frameParentPosition]}>
         <View style={styles.statusBarParent}>
-          <View style={styles.statusBar}>
-            <StatusBar1
-              cap={require('../assets/cap1.png')}
-              wifi={require('../assets/wifi1.png')}
-              cellularConnection={require('../assets/cellular-connection1.png')}
-              statusBarPosition="absolute"
-              statusBarHeight="100%"
-              statusBarAlignSelf="unset"
-              statusBarWidth="100%"
-              statusBarTop="0%"
-              statusBarRight="0%"
-              statusBarBottom="0%"
-              statusBarLeft="0%"
-              batteryWidth="6.5%"
-              batteryLeft="89.7%"
-              batteryRight="3.81%"
-              borderWidth="90.29%"
-              borderRight="9.71%"
-              capIconWidth="5.4%"
-              capIconLeft="94.6%"
-              capIconRight="0%"
-              capacityWidth="73.74%"
-              capacityRight="17.99%"
-              capacityLeft="8.27%"
-              wifiIconWidth={18}
-              cellularConnectionIconWidth={19}
-              timeStyleWidth="14.39%"
-              timeStyleLeft="5.61%"
-              timeWidth={62}
-            />
-          </View>
-          <View style={styles.statusBar1}>
-            <Text style={styles.houseTypo}>house</Text>
-            <View style={styles.statusBarChild} />
-            <Text style={[styles.shareNodes, styles.houseTypo]}>
-              share-nodes
-            </Text>
-            <Text style={[styles.shareNodes, styles.houseTypo]}>square-9</Text>
-            <Text style={[styles.shareNodes, styles.houseTypo]}>square-9</Text>
-          </View>
+          <Section2 />
           <HouseSection2 />
         </View>
         <View style={styles.frameGroup}>

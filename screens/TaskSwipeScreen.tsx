@@ -9,8 +9,95 @@ import ContainerStep from '../components/ContainerStep';
 import {Color, FontSize, FontFamily, Border, Padding} from '../GlobalStyles';
 import {Pressable, Box, HStack, VStack, Spacer, Icon} from 'native-base';
 import {SwipeListView} from 'react-native-swipe-list-view';
+import {gql, useMutation, useQuery} from '@apollo/client';
+
+export const UPDATE_TRACKING_EVENT = gql`
+  mutation update_tracking_event($ids: [ID!]!, $input: TrackingEventInputType) {
+    update_tracking_event(ids: $ids, input: $input) {
+      id
+      name
+      last_updated_by
+      updated_at
+      event_data
+      actual_date
+      estimated_date
+      location_tag
+      sequence_number
+      location {
+        ... on AddressObjectType {
+          id
+          name
+        }
+        ... on PortObjectType {
+          id
+          name
+        }
+      }
+    }
+  }
+`;
+
+export const FETCH_EVENT_AND_MILESTONES = gql`
+  query ($ids: [ID!]!, $reference_type: String!, $workflow_type: String!) {
+    fetch_tracking_events(
+      ids: $ids
+      reference_type: $reference_type
+      workflow_type: $workflow_type
+    ) {
+      id
+      name
+      last_updated_by
+      updated_at
+      event_data
+      event_type
+      workflow_type
+      actual_date
+      estimated_date
+      location_tag
+      sequence_number
+      reference_type
+      reference_id
+      location {
+        ... on AddressObjectType {
+          id
+          name
+          country_code
+          city {
+            name
+          }
+          company {
+            id
+            registered_name
+          }
+          print_address
+        }
+        ... on PortObjectType {
+          id
+          name
+          country_code
+          city {
+            name
+          }
+        }
+      }
+    }
+  }
+`;
 
 function Basic() {
+  const [updateEvent, {data: updateData, loading, error}] = useMutation(
+    UPDATE_TRACKING_EVENT,
+  );
+
+  const {data: trackingEvents} = useQuery(FETCH_EVENT_AND_MILESTONES, {
+    variables: {
+      ids: [181639],
+      reference_type: 'Shipment::Shipment',
+      workflow_type: 'main',
+    },
+  });
+
+  console.log(trackingEvents, ' printing_tracking_events');
   const data = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -52,7 +139,6 @@ function Basic() {
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
     },
   ];
-  const [listData, setListData] = React.useState<any>(data);
 
   const closeRow = (rowMap: any, rowKey: any) => {
     if (rowMap[rowKey]) {
@@ -61,11 +147,18 @@ function Basic() {
   };
 
   const deleteRow = (rowMap: any, rowKey: any) => {
-    closeRow(rowMap, rowKey);
-    const newData = [...listData];
-    const prevIndex = listData.findIndex((item: any) => item.key === rowKey);
-    newData.splice(prevIndex, 1);
-    setListData(newData);
+    console.log(rowKey, ' printing_row_key');
+    updateEvent({
+      variables: {
+        ids: [rowKey],
+        input: {actual_date: new Date().getTime() / 1000},
+      },
+    });
+    // closeRow(rowMap, rowKey);
+    // const newData = [...listData];
+    // const prevIndex = listData.findIndex((item: any) => item.key === rowKey);
+    // newData.splice(prevIndex, 1);
+    // setListData(newData);
   };
 
   const onRowDidOpen = (rowKey: any) => {
@@ -117,31 +210,63 @@ function Basic() {
     </Box>
   );
 
-  const renderHiddenItem = (data: any, rowMap: any) => (
-    <HStack flex="1" pl="2">
-      <Pressable
-        w="70"
-        cursor="pointer"
-        bg="#c7ebd1"
-        justifyContent="center"
-        onPress={() => deleteRow(rowMap, data.item.key)}
-        _pressed={{
-          opacity: 0.5,
-        }}>
-        <VStack alignItems="center" space={2}>
-          {/* <Icon as={<MaterialIcons name="delete" />} color="white" size="xs" /> */}
-          <Text color="white" fontSize="xs" fontWeight="medium">
-            Mark Complete
-          </Text>
-        </VStack>
-      </Pressable>
-    </HStack>
-  );
+  const renderHiddenItem = (data: any, rowMap: any) => {
+    return (
+      <HStack flex="1" pl="2">
+        <Pressable
+          w="70"
+          ml="auto"
+          cursor="pointer"
+          bg="coolGray.200"
+          justifyContent="center"
+          onPress={() => closeRow(rowMap, data.item.id)}
+          _pressed={{
+            opacity: 0.5,
+          }}>
+          <VStack alignItems="center" space={2}>
+            <Icon
+              // as={<Entypo name="dots-three-horizontal" />}
+              size="xs"
+              color="coolGray.800"
+            />
+            <Text fontSize="xs" fontWeight="medium" color="coolGray.800">
+              More
+            </Text>
+          </VStack>
+        </Pressable>
+        <Pressable
+          w="70"
+          cursor="pointer"
+          bg="#c7ebd1"
+          justifyContent="center"
+          onPress={() => deleteRow(rowMap, data.item.id)}
+          _pressed={{
+            opacity: 0.5,
+          }}>
+          <VStack alignItems="center" space={2}>
+            {/* <Icon as={<MaterialIcons name="delete" />} color="white" size="xs" /> */}
+            <Text color="white" fontSize="xs" fontWeight="medium">
+              Mark Complete
+            </Text>
+          </VStack>
+        </Pressable>
+      </HStack>
+    );
+  };
+
+  // const renderHiddenItem = (data: any, rowMap: any) => (
+  // <HStack flex="1" pl="2"></HStack>;
+  // );
 
   return (
     <Box bg="white" safeArea flex="1">
       <SwipeListView
-        data={listData}
+        data={trackingEvents?.fetch_tracking_events.map((te: any) => ({
+          id: te.id,
+          fullName: te.name,
+          timeStamp: new Date(te.actual_date * 1000).toLocaleDateString(),
+          recentText: 'Last Updated By ' + te.last_updated_by,
+        }))}
         renderItem={renderItem}
         renderHiddenItem={renderHiddenItem}
         rightOpenValue={-130}

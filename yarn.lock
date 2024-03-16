@@ -7069,6 +7069,11 @@ react-native-auth0@^3.1.0:
     prop-types "^15.8.1"
     url "^0.11.0"
 
+react-native-full-screen-notification-incoming-call@^0.1.12:
+  version "0.1.12"
+  resolved "https://registry.npmjs.org/react-native-full-screen-notification-incoming-call/-/react-native-full-screen-notification-incoming-call-0.1.12.tgz"
+  integrity sha512-oPIZnN+3dWJJ+9DNqEEExqY2YP0YCeyPvWZFlBU3ahiBANLDqWawLdx35vM+Qg9IzHZwiIO+P29vnBeVXZ+NfA==
+
 react-native-gesture-handler@^2.15.0, "react-native-gesture-handler@>= 1.0.0":
   version "2.15.0"
   resolved "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.15.0.tgz"

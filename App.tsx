@@ -33,10 +33,10 @@ function App(): React.JSX.Element {
     });
   }, []);
 
-  // useEffect(() => {
-  //   const token = getFcmToken();
-  //   addToken({variables: {token}});
-  // }, []);
+  useEffect(() => {
+    const token = getFcmToken();
+    // addToken({variables: {token}});
+  }, []);
 
   useEffect(() => {
     const unsubscribe = registerListenerWithFCM();

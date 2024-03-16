@@ -1,77 +1,86 @@
 import * as React from 'react';
-import {Text, StyleSheet, View} from 'react-native';
+import {Text, StyleSheet, View, TextInput} from 'react-native';
 // import {Image} from 'expo-image';
 import Section from '../components/Section';
 import {Padding, Color, FontFamily, FontSize, Border} from '../GlobalStyles';
+import {ScrollView, KeyboardAvoidingView, Platform} from 'react-native';
 
 const ActivityScreen = () => {
   return (
     <View style={[styles.activityScreen, styles.frameWrapperFlexBox]}>
       <Section />
       <View style={styles.frameParent}>
-        <View style={[styles.frameWrapper, styles.frameSpaceBlock1]}>
-          <View style={[styles.yesterdayWrapper, styles.wrapperFlexBox]}>
-            <Text style={styles.yesterday}>Yesterday</Text>
+        <ScrollView>
+          <View style={[styles.frameWrapper, styles.frameSpaceBlock1]}>
+            <View style={[styles.yesterdayWrapper, styles.wrapperFlexBox]}>
+              <Text style={styles.yesterday}>Yesterday</Text>
+            </View>
           </View>
-        </View>
-        <View style={[styles.frameContainer, styles.frameSpaceBlock]}>
-          <View style={styles.loremLayout}>
-            <Text
+          <View style={[styles.frameContainer, styles.frameSpaceBlock]}>
+            <View style={styles.loremLayout}>
+              <Text
+                style={[
+                  styles.loremIpsumDolor,
+                  styles.todayLayout,
+                ]}>{`Hello What is Status of this shipment`}</Text>
+            </View>
+          </View>
+          <View style={[styles.frameGroup, styles.frameSpaceBlock]}>
+            <View style={styles.loremLayout}>
+              <Text
+                style={[
+                  styles.loremIpsumDolor,
+                  styles.todayLayout,
+                ]}>{`3 containers are already pickedup`}</Text>
+            </View>
+            <View
               style={[
-                styles.loremIpsumDolor,
-                styles.todayLayout,
-              ]}>{`Lorem Ipsum Dolor solet
- something soemthing`}</Text>
+                styles.loremIpsumDolorSoletSomethFrame,
+                styles.loremLayout,
+              ]}>
+              <Text
+                style={[
+                  styles.loremIpsumDolor,
+                  styles.todayLayout,
+                ]}>{`okay cool please let me know about other containers`}</Text>
+            </View>
           </View>
-        </View>
-        <View style={[styles.frameGroup, styles.frameSpaceBlock]}>
-          <View style={styles.loremLayout}>
-            <Text
-              style={[
-                styles.loremIpsumDolor,
-                styles.todayLayout,
-              ]}>{`Lorem Ipsum Dolor solet
- something soemthing`}</Text>
+          <View style={[styles.frameView, styles.frameSpaceBlock]}>
+            <View style={[styles.yesterdayWrapper, styles.wrapperFlexBox]}>
+              <Text style={[styles.today, styles.todayLayout]}>Today</Text>
+            </View>
           </View>
-          <View
-            style={[
-              styles.loremIpsumDolorSoletSomethFrame,
-              styles.loremLayout,
-            ]}>
-            <Text
-              style={[
-                styles.loremIpsumDolor,
-                styles.todayLayout,
-              ]}>{`Lorem Ipsum Dolor solet
- something soemthing`}</Text>
+          <View style={[styles.frameContainer, styles.frameSpaceBlock]}>
+            <View style={styles.loremLayout}>
+              <Text
+                style={[
+                  styles.loremIpsumDolor,
+                  styles.todayLayout,
+                ]}>{`Okay Sure will let you know`}</Text>
+            </View>
           </View>
-        </View>
-        <View style={[styles.frameView, styles.frameSpaceBlock]}>
-          <View style={[styles.yesterdayWrapper, styles.wrapperFlexBox]}>
-            <Text style={[styles.today, styles.todayLayout]}>Today</Text>
-          </View>
-        </View>
-        <View style={[styles.frameContainer, styles.frameSpaceBlock]}>
-          <View style={styles.loremLayout}>
-            <Text
-              style={[
-                styles.loremIpsumDolor,
-                styles.todayLayout,
-              ]}>{`Lorem Ipsum Dolor solet
- something soemthing`}</Text>
-          </View>
-        </View>
+        </ScrollView>
+        {/* <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={{ flex: 1 }}
+        > */}
         <View style={[styles.frameParent1, styles.frameLayout]}>
           <View style={[styles.writeSomethingHereWrapper, styles.frameLayout]}>
-            <Text style={styles.writeSomethingHere}>Write Something here</Text>
+            <TextInput
+              style={styles.writeSomethingHere}
+              // placeholder="Write Something here"
+              onFocus={() => console.log('Keyboard opened')}
+            />
           </View>
           {/* <Image
             style={[styles.frameChild, styles.frameLayout]}
             contentFit="cover"
-            source={require('../assets/frame-1171276440.png')}
+            source={require('../assets/MicrosoftTeams-image.png')}
           /> */}
         </View>
+        {/* </KeyboardAvoidingView> */}
       </View>
+      {/* <NavigationBar /> */}
     </View>
   );
 };
@@ -99,7 +108,7 @@ const styles = StyleSheet.create({
   },
   todayLayout: {
     height: 42,
-    width: 186,
+    width: 200,
     color: Color.colorGray_100,
     fontFamily: FontFamily.robotoMedium,
     fontWeight: '500',
@@ -187,6 +196,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     lineHeight: 20,
     fontSize: FontSize.size_sm,
+    width: '100%',
   },
   writeSomethingHereWrapper: {
     width: 271,
@@ -197,8 +207,8 @@ const styles = StyleSheet.create({
     backgroundColor: Color.white,
   },
   frameChild: {
-    width: 52,
-    height: 49,
+    width: 32,
+    height: 29,
     marginLeft: 46,
   },
   frameParent1: {
@@ -212,6 +222,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: Padding.p_8xs,
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   frameParent: {
     paddingVertical: 68,

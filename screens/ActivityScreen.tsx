@@ -4,6 +4,7 @@ import { Image } from "expo-image";
 import Section from "../components/Section";
 import { Padding, Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 import { ScrollView, KeyboardAvoidingView, Platform } from "react-native";
+import NavigationBar from "../components/NavigationBar";
 
 const ActivityScreen = () => {
   return (
@@ -77,6 +78,7 @@ const ActivityScreen = () => {
         </View>
         {/* </KeyboardAvoidingView> */}
       </View>
+      <NavigationBar />
     </View>
   );
 };

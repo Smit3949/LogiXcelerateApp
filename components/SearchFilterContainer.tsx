@@ -8,7 +8,12 @@ const SearchFilterContainer = () => {
       <View style={styles.statusBarInnerFlexBox}>
         <Text style={[styles.shipments, styles.shipmentsTypo]}>Shipments</Text>
       </View>
-      <View style={[styles.statusBarInner, styles.statusBarInnerFlexBox]}>
+      <View
+        style={[
+          styles.statusBarInner,
+          styles.statusBarInnerFlexBox,
+          styles.width,
+        ]}>
         <View style={styles.searchAnyShipmentByBlAwbParent}>
           <Text style={[styles.searchAnyShipment, styles.magnifyingGlassTypo]}>
             Search any shipment by BL, AWB, Container #, Ref #....
@@ -54,6 +59,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     letterSpacing: 0,
     fontFamily: FontFamily.robotoRegular,
+  },
+  width: {
+    width: '80%',
   },
   wrapperSpaceBlock: {
     paddingVertical: Padding.p_7xs,

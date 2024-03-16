@@ -1,27 +1,43 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
+import { useNavigation } from "@react-navigation/core";
 
-const NavigationBar = () => {
-  const renderNavItem = (iconSource, text) => (
-    <View style={styles.parentSpaceBlock}>
+const NavigationBar = (props: any) => {
+  const navigation = useNavigation();
+
+  const renderNavItem = (iconSource, text, screenName) => (
+    <TouchableOpacity
+      style={styles.parentSpaceBlock}
+      onPress={() => navigation.navigate(screenName)}
+    >
       <Image style={styles.icon} source={iconSource} />
       <Text style={styles.text}>{text}</Text>
-    </View>
+    </TouchableOpacity>
   );
 
   return (
     <View style={styles.navigationCard}>
-      {renderNavItem(require("../assets/frame-1171276488.png"), "Home")}
+      {renderNavItem(
+        require("../assets/frame-1171276488.png"),
+        "Home",
+        "HomeScreen"
+      )}
       {renderNavItem(
         require("../assets/noun-clipboard-1968622-2.png"),
-        "Shipments"
+        "Shipments",
+        "ShipmentListViewTopNavigat"
       )}
       {renderNavItem(
         require("../assets/noun-clipboard-1968622-21.png"),
-        "Companies"
+        "Companies",
+        "CompaniesScreen"
       )}
-      {renderNavItem(require("../assets/vector.png"), "Preferences")}
+      {renderNavItem(
+        require("../assets/vector.png"),
+        "Preferences",
+        "WidgetSubscription"
+      )}
     </View>
   );
 };

@@ -1,10 +1,12 @@
 import * as React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View , ScrollView} from "react-native";
 import HouseSection1 from "../components/HouseSection1";
 import { Padding, Color, FontSize, FontFamily, Border } from "../GlobalStyles";
+import {Switch} from "native-base"
 
 const WidgetSubscription = () => {
   return (
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
     <View style={styles.widgetSubscription}>
       <View style={[styles.frameParent, styles.shipmentsShadowBox]}>
         <HouseSection1 />
@@ -221,11 +223,14 @@ const WidgetSubscription = () => {
           </View>
         </View>
       </View>
-    </View>
+    </View></ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    flexGrow: 1,
+  },
   shipmentsShadowBox: {
     shadowOpacity: 1,
     elevation: 4,
@@ -252,9 +257,8 @@ const styles = StyleSheet.create({
     display: "flex",
     color: Color.secondaryGrey400,
     lineHeight: 28,
-    fontSize: FontSize.size_xs,
+    fontSize: 10,
     textAlign: "left",
-    fontFamily: FontFamily.circularStd,
     fontWeight: "500",
     alignItems: "center",
   },
@@ -268,10 +272,8 @@ const styles = StyleSheet.create({
   selectUpto2: {
     lineHeight: 20,
     textAlign: "left",
-    fontFamily: FontFamily.circularStd,
     fontWeight: "500",
     color: Color.primaryBlue500,
-    fontSize: FontSize.sectionSubtitleFontSize4Default_size,
   },
   inSelected: {
     width: 238,
@@ -312,7 +314,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     lineHeight: 26,
     letterSpacing: 0,
-    fontSize: FontSize.sectionSubtitleFontSize4Default_size,
   },
   showsAllShipments: {
     width: 318,
@@ -322,7 +323,7 @@ const styles = StyleSheet.create({
     marginLeft: -26,
     top: "50%",
     left: "50%",
-    borderRadius: Border.br_4xl,
+    borderRadius: 20,
     backgroundColor: Color.primaryBlue500,
     width: 52,
     height: 30,
@@ -336,7 +337,7 @@ const styles = StyleSheet.create({
     right: "0%",
     bottom: "0%",
     left: "0%",
-    borderRadius: Border.br_base,
+    borderRadius: 50,
     backgroundColor: Color.white,
     position: "absolute",
     width: "100%",
@@ -345,7 +346,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     width: 18,
     shadowColor: "rgba(0, 35, 11, 0.2)",
-    borderRadius: Border.br_58xl,
+    borderRadius: 12,
     height: 18,
     shadowOpacity: 1,
     elevation: 4,

@@ -203,8 +203,8 @@ const styles = StyleSheet.create({
     backgroundColor: Color.white,
   },
   frameChild: {
-    width: 52,
-    height: 49,
+    width: 32,
+    height: 29,
     marginLeft: 46,
   },
   frameParent1: {

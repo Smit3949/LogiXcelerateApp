@@ -7,7 +7,6 @@ const HouseSection1 = () => {
     <View style={styles.frameParent}>
       <View>
         <View style={styles.houseParent}>
-          <Text style={styles.house}>house</Text>
           <Text style={[styles.shipments, styles.shipmentsTypo]}>
             Shipments
           </Text>
@@ -24,7 +23,7 @@ const HouseSection1 = () => {
           </View>
         </View>
         <View style={[styles.shareNodesWrapper, styles.wrapperSpaceBlock]}>
-          <Text style={styles.users}>share-nodes</Text>
+          <Text style={styles.users}>share</Text>
         </View>
       </View>
     </View>

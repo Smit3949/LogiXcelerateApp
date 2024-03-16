@@ -7,10 +7,156 @@ import SectionInvoicesStatus from '../components/SectionInvoicesStatus';
 import BookingConfirmationContainer from '../components/BookingConfirmationContainer';
 import ContainerStep from '../components/ContainerStep';
 import {Color, FontSize, FontFamily, Border, Padding} from '../GlobalStyles';
+import {Pressable, Box, HStack, VStack, Spacer, Icon} from 'native-base';
+import {SwipeListView} from 'react-native-swipe-list-view';
+
+function Basic() {
+  const data = [
+    {
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      fullName: 'Booking Confirmed',
+      timeStamp: '12:47 PM',
+      recentText: 'Good Day!',
+      avatarUrl:
+        'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    },
+    {
+      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+      fullName: 'Gated in at PoL',
+      timeStamp: '11:11 PM',
+      recentText: 'Cheer up, there!',
+      avatarUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d72',
+      fullName: 'Loaded on Vessel',
+      timeStamp: '6:22 PM',
+      recentText: 'Good Day!',
+      avatarUrl: 'https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg',
+    },
+    {
+      id: '68694a0f-3da1-431f-bd56-142371e29d72',
+      fullName: 'Vessel Departed',
+      timeStamp: '8:56 PM',
+      recentText: 'All the best',
+      avatarUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU',
+    },
+    {
+      id: '28694a0f-3da1-471f-bd96-142456e29d72',
+      fullName: 'Arrived at PoD',
+      timeStamp: '12:47 PM',
+      recentText: 'I will call today.',
+      avatarUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
+    },
+  ];
+  const [listData, setListData] = React.useState<any>(data);
+
+  const closeRow = (rowMap: any, rowKey: any) => {
+    if (rowMap[rowKey]) {
+      rowMap[rowKey].closeRow();
+    }
+  };
+
+  const deleteRow = (rowMap: any, rowKey: any) => {
+    closeRow(rowMap, rowKey);
+    const newData = [...listData];
+    const prevIndex = listData.findIndex((item: any) => item.key === rowKey);
+    newData.splice(prevIndex, 1);
+    setListData(newData);
+  };
+
+  const onRowDidOpen = (rowKey: any) => {
+    console.log('This row opened', rowKey);
+  };
+
+  const renderItem = ({item, index}: {item: any; index: number}) => (
+    <Box>
+      <Pressable
+        onPress={() => console.log('You touched me')}
+        _dark={{
+          bg: 'coolGray.800',
+        }}
+        _light={{
+          bg: 'white',
+        }}>
+        <Box pl="4" pr="5" py="2">
+          <HStack alignItems="center" space={3}>
+            <VStack>
+              <Text
+                color="coolGray.800"
+                _dark={{
+                  color: 'warmGray.50',
+                }}
+                bold>
+                {item.fullName}
+              </Text>
+              <Text
+                color="coolGray.600"
+                _dark={{
+                  color: 'warmGray.200',
+                }}>
+                {item.recentText}
+              </Text>
+            </VStack>
+            <Spacer />
+            <Text
+              fontSize="xs"
+              color="coolGray.800"
+              _dark={{
+                color: 'warmGray.50',
+              }}
+              alignSelf="flex-start">
+              {item.timeStamp}
+            </Text>
+          </HStack>
+        </Box>
+      </Pressable>
+    </Box>
+  );
+
+  const renderHiddenItem = (data: any, rowMap: any) => (
+    <HStack flex="1" pl="2">
+      <Pressable
+        w="70"
+        cursor="pointer"
+        bg="#c7ebd1"
+        justifyContent="center"
+        onPress={() => deleteRow(rowMap, data.item.key)}
+        _pressed={{
+          opacity: 0.5,
+        }}>
+        <VStack alignItems="center" space={2}>
+          {/* <Icon as={<MaterialIcons name="delete" />} color="white" size="xs" /> */}
+          <Text color="white" fontSize="xs" fontWeight="medium">
+            Mark Complete
+          </Text>
+        </VStack>
+      </Pressable>
+    </HStack>
+  );
+
+  return (
+    <Box bg="white" safeArea flex="1">
+      <SwipeListView
+        data={listData}
+        renderItem={renderItem}
+        renderHiddenItem={renderHiddenItem}
+        rightOpenValue={-130}
+        previewRowKey={'0'}
+        previewOpenValue={-40}
+        previewOpenDelay={3000}
+        onRowDidOpen={onRowDidOpen}
+      />
+    </Box>
+  );
+}
 
 const TaskSwipeScreen = () => {
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
+    // <ScrollView contentContainerStyle={styles.scrollContainer}>
     <View style={styles.taskSwipeScreen}>
       <View style={styles.frameParent}>
         <View style={styles.statusBarParent}>
@@ -62,9 +208,6 @@ const TaskSwipeScreen = () => {
             <View style={styles.partyDetails}>
               <View style={styles.partyDetailsInner}>
                 <View style={styles.locationDotParent}>
-                  <Text style={[styles.locationDot, styles.locationDotTypo]}>
-                    location-dot
-                  </Text>
                   <Text style={[styles.labelHeader, styles.textTypo]}>
                     ETA Status
                   </Text>
@@ -88,19 +231,21 @@ const TaskSwipeScreen = () => {
                   <Text style={[styles.text, styles.textTypo]}>On Time</Text>
                 </View>
               </View>
-            </View>
-            <View style={styles.frameWrapper}>
-              <View style={[styles.frameView, styles.mainLayout]}>
-                <View style={styles.locationDotParent}>
+              <View style={styles.locationDotParent}>
+                <View>
                   <View>
-                    <View>
-                      <View style={styles.anchorParent}>
-                        <Text style={[styles.anchor, styles.anchorTypo, styles.fontSizeSmall]}>
+                    <View style={styles.anchorParent}>
+                      <Text
+                        style={[
+                          styles.anchor,
+                          styles.anchorTypo,
+                          styles.fontSizeSmall,
+                        ]}>
                         Nhavasheva, IN
-                        </Text>
-                        <View style={styles.frameChild} />
-                      </View>
-                      {/* <View style={styles.frameWrapper1}>
+                      </Text>
+                      <View style={styles.frameChild} />
+                    </View>
+                    {/* <View style={styles.frameWrapper1}>
                         <View>
                           <Text
                             style={[styles.etaDammamSadmn, styles.textTypo]}>
@@ -108,17 +253,22 @@ const TaskSwipeScreen = () => {
                           </Text>
                         </View>
                       </View> */}
-                    </View>
                   </View>
-                  <View style={styles.timelinePlaceOfCarrierRe1}>
-                    <View>
-                      <View style={styles.anchorParent}>
-                        <Text style={[styles.anchor, styles.anchorTypo, styles.fontSizeSmall]}>
+                </View>
+                <View style={styles.timelinePlaceOfCarrierRe1}>
+                  <View>
+                    <View style={styles.anchorParent}>
+                      <Text
+                        style={[
+                          styles.anchor,
+                          styles.anchorTypo,
+                          styles.fontSizeSmall,
+                        ]}>
                         Jebelali, AJ
-                        </Text>
-                        <View style={styles.frameChild} />
-                      </View>
-                      {/* <View style={styles.frameWrapper1}>
+                      </Text>
+                      <View style={styles.frameChild} />
+                    </View>
+                    {/* <View style={styles.frameWrapper1}>
                         <View>
                           <Text
                             style={[styles.etaDammamSadmn, styles.textTypo]}>
@@ -126,14 +276,20 @@ const TaskSwipeScreen = () => {
                           </Text>
                         </View>
                       </View> */}
-                    </View>
                   </View>
-                  <View style={styles.timelinePlaceOfCarrierRe2}>
-                    <View>
-                      <Text style={[styles.anchor, styles.anchorTypo, , styles.fontSizeSmall]}>
+                </View>
+                <View style={styles.timelinePlaceOfCarrierRe2}>
+                  <View>
+                    <Text
+                      style={[
+                        styles.anchor,
+                        styles.anchorTypo,
+                        ,
+                        styles.fontSizeSmall,
+                      ]}>
                       Dammam, SA
-                      </Text>
-                      {/* <View style={styles.frameWrapper1}>
+                    </Text>
+                    {/* <View style={styles.frameWrapper1}>
                         <View>
                           <Text
                             style={[
@@ -142,14 +298,11 @@ const TaskSwipeScreen = () => {
                             ]}>{`Dammam, SA `}</Text>
                         </View>
                       </View> */}
-                    </View>
                   </View>
-                </View>
-                <View style={styles.expandWrapper}>
-                  <Text style={styles.expand}>Expand</Text>
                 </View>
               </View>
             </View>
+
             <View style={[styles.mainContainerlistToday, styles.mainLayout]}>
               <View style={[styles.mainContainerlistToday1, styles.mainLayout]}>
                 <View style={styles.anchorParent}>
@@ -157,31 +310,11 @@ const TaskSwipeScreen = () => {
                     <Text style={[styles.shipmentWorkflow, styles.textTypo]}>
                       Shipment Workflow
                     </Text>
-                    <View style={styles.lineBreak} ></View> 
-                    <BookingConfirmationContainer
-                      statusMessage="Booking Confirmed"
-                      bookingDetailsText="Actual : Fri 17 Nov, 12:30 PM"
-                    />
-                <ContainerStep
-                  shipmentStatus="Gated in at PoL"
-                  statusDescription="Estimated : "
-                />
-                <ContainerStep
-                  shipmentStatus="Loaded on Vessel"
-                  statusDescription="Actual : "
-                />
-                <ContainerStep
-                  shipmentStatus="Vessel Departed"
-                  statusDescription="Actual : "
-                />
-                <ContainerStep
-                  shipmentStatus="Arrived at PoD"
-                  statusDescription="Actual : Fri 17 Nov, 12:30 PM"
-                />
+                    <View style={styles.lineBreak}></View>
+                    <Basic />
                   </View>
-                  
                 </View>
-                
+
                 <View style={styles.mainContainerlistTodayChild} />
               </View>
             </View>
@@ -189,7 +322,7 @@ const TaskSwipeScreen = () => {
         </View>
       </View>
     </View>
-    </ScrollView>
+    // </ScrollView>
   );
 };
 
@@ -274,7 +407,6 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.robotoRegular,
   },
   labelHeader: {
-    marginLeft: 8,
     textAlign: 'left',
     color: Color.colorSlategray_200,
     textTransform: 'uppercase',
@@ -283,6 +415,7 @@ const styles = StyleSheet.create({
   },
   locationDotParent: {
     flexDirection: 'row',
+    marginTop: 10,
   },
   partyDetailsInner: {
     width: 320,
@@ -296,7 +429,7 @@ const styles = StyleSheet.create({
   tue02Jan: {
     marginTop: 5,
     color: Color.colorSeagreen,
-    fontSize: FontSize.size_lg,
+    fontSize: FontSize.size_base,
   },
   reachingIn5: {
     marginTop: 5,
@@ -313,17 +446,18 @@ const styles = StyleSheet.create({
     backgroundColor: Color.colorHoneydew_100,
     paddingHorizontal: Padding.p_base,
     paddingVertical: Padding.p_10xs,
-    marginLeft: 15,
+    marginLeft: 10,
     borderRadius: Border.br_9xs,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
   },
   frameContainer: {
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     marginTop: 10,
     alignItems: 'center',
     flexDirection: 'row',
+    width: 340,
   },
   partyDetails: {
     width: 390,
@@ -370,7 +504,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Padding.p_mini,
     paddingVertical: Padding.p_3xs,
     overflow: 'hidden',
-    height:100,
+    height: 100,
     width: 390,
   },
   frameWrapper: {

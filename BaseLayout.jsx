@@ -73,6 +73,7 @@ export default function BaseLayout() {
     };
   });
 
+  // console.log(apolloClient, ' printing_apolloca');
   if (!apolloClient) {
     return <></>;
   }

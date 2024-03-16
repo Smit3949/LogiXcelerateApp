@@ -12,8 +12,15 @@ import messaging, {firebase} from '@react-native-firebase/messaging';
 import BaseLayout from './BaseLayout';
 import {useEffect} from 'react';
 import {getFcmToken, registerListenerWithFCM} from './utils/pushnotification';
+import {useMutation} from '@apollo/client';
+import {ADD_ACTIVITY_NOTIFICATION_TOKEN} from './utils/graphql/activity';
 
 function App(): React.JSX.Element {
+  // const [addToken, {error}] = useMutation(ADD_ACTIVITY_NOTIFICATION_TOKEN);
+
+  // useEffect(() => {
+  //   console.error(error);
+  // }, [error]);
   useEffect(() => {
     firebase.initializeApp({
       apiKey: 'AIzaSyAPB3QDi4x3M3yF_Sr1w1bDaVbO4E4rqME',
@@ -26,9 +33,10 @@ function App(): React.JSX.Element {
     });
   }, []);
 
-  useEffect(() => {
-    getFcmToken();
-  }, []);
+  // useEffect(() => {
+  //   const token = getFcmToken();
+  //   addToken({variables: {token}});
+  // }, []);
 
   useEffect(() => {
     const unsubscribe = registerListenerWithFCM();

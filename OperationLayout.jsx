@@ -16,6 +16,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import WidgetSubscription from './screens/WidgetSubscription';
 import TaskSwipeScreen1 from './screens/TaskSwipeScreen1';
 import MyGateLikeWISMO from './screens/MyGateLikeWISMO';
+import HomeScreenDashboardV from './screens/HomeScreen';
 
 export default function OperationLayout() {
   console.log('cominining_heehre');
@@ -50,6 +51,7 @@ export default function OperationLayout() {
           component={Documents}
           options={{headerShown: false}}
         />
+        <Stack.Screen name="HomeScreen" component={HomeScreenDashboardV} />
 
         <Stack.Screen
           name="ShipmentListViewTopNavigat"

@@ -10,20 +10,23 @@ import TaskSwipeScreen from './TaskSwipeScreen';
 
 const About = () => <Text>About</Text>;
 
-const ShipmentListViewTopNavigat = () => {
+const ShipmentListViewTopNavigat = (props: any) => {
+  const {navigation} = props;
+  console.log('navigation', navigation);
   return (
     <ScrollView>
       <View style={styles.shipmentListViewTopNavigat}>
         <View style={styles.frameParent}>
           <View style={styles.statusBarParent}>
-            <SearchFilterContainer />
-            <Link to="/shipment">
-              <SectionWithComments
-                mblNumber="MBL # HLCUBO12312BAXD9"
-                shipmentNumber="JOB/23-24/0000001"
-              />
-            </Link>
-            {/* <SectionForm /> */}
+            {/* <SearchFilterContainer /> */}
+            {/* <Link to="/shipment"> */}
+            <SectionWithComments
+              onPress={() => navigation.navigate('ActivityScreen')}
+              mblNumber="MBL # HLCUBO12312BAXD9"
+              shipmentNumber="JOB/23-24/0000001"
+            />
+            {/* </Link> */}
+            <SectionForm />
             <SectionWithComments
               mblNumber="MBL # HWEUBO12312BAXD9"
               shipmentNumber="JOB/23-24/5670001"

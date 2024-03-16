@@ -23,7 +23,7 @@ const NavigationBar = (props: any) => {
         {renderNavItem(
           require('../assets/frame-1171276488.png'),
           'Home',
-          'home',
+          'HomeScreen',
         )}
       </View>
       <View>
@@ -44,7 +44,7 @@ const NavigationBar = (props: any) => {
         {renderNavItem(
           require('../assets/vector.png'),
           'Preferences',
-          'preference',
+          'WidgetSubscription',
         )}
       </View>
     </View>

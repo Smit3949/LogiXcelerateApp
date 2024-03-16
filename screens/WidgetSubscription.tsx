@@ -1,114 +1,397 @@
-import * as React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-// import {Image} from 'expo-image';
-import StatusBar1 from '../components/StatusBar1';
-import HouseSection1 from '../components/HouseSection1';
-import DateTimeSection from '../components/DateTimeSection';
-import {Color, FontFamily, FontSize, Border, Padding} from '../GlobalStyles';
+import * as React from "react";
+import { Text, StyleSheet, View } from "react-native";
+import HouseSection1 from "../components/HouseSection1";
+import { Padding, Color, FontSize, FontFamily, Border } from "../GlobalStyles";
 
 const WidgetSubscription = () => {
   return (
     <View style={styles.widgetSubscription}>
-      <View style={styles.frameParent}>
-        <View style={styles.statusBarParent}>
-          <View style={styles.statusBar}>
-            <StatusBar1
-              cap={require('../assets/cap1.png')}
-              wifi={require('../assets/wifi1.png')}
-              cellularConnection={require('../assets/cellular-connection1.png')}
-              statusBarPosition="absolute"
-              statusBarHeight="100%"
-              statusBarAlignSelf="unset"
-              statusBarWidth="100%"
-              statusBarTop="0%"
-              statusBarRight="0%"
-              statusBarBottom="0%"
-              statusBarLeft="0%"
-              batteryWidth="6.5%"
-              batteryLeft="89.7%"
-              batteryRight="3.81%"
-              borderWidth="90.29%"
-              borderRight="9.71%"
-              capIconWidth="5.4%"
-              capIconLeft="94.6%"
-              capIconRight="0%"
-              capacityWidth="73.74%"
-              capacityRight="17.99%"
-              capacityLeft="8.27%"
-              wifiIconWidth={18}
-              cellularConnectionIconWidth={19}
-              timeStyleWidth="14.39%"
-              timeStyleLeft="5.61%"
-              timeWidth={62}
-            />
+      <View style={[styles.frameParent, styles.shipmentsShadowBox]}>
+        <HouseSection1 />
+        <View style={[styles.shipmentsWrapper, styles.shipmentsFlexBox]}>
+          <View style={[styles.shipments, styles.shipmentsSpaceBlock]}>
+            <View style={[styles.shipmentsInner, styles.switchFlexBox]}>
+              <View>
+                <View style={styles.switchFlexBox}>
+                  <Text
+                    style={styles.selectUpto2}
+                  >{`Select upto 2 Widgets `}</Text>
+                </View>
+                <Text style={[styles.inSelected, styles.inSelectedTypo]}>
+                  1/2 in Selected
+                </Text>
+              </View>
+            </View>
           </View>
-          <View style={styles.statusBar1}>
-            <Text style={styles.houseTypo}>house</Text>
-            <View style={styles.statusBarChild} />
-            <Text style={[styles.shareNodes, styles.houseTypo]}>
-              share-nodes
-            </Text>
-            <Text style={[styles.shareNodes, styles.houseTypo]}>square-9</Text>
-            <Text style={[styles.shareNodes, styles.houseTypo]}>square-9</Text>
-          </View>
-          <HouseSection1 />
         </View>
-        <DateTimeSection />
+        <View style={styles.frameWrapper}>
+          <View style={[styles.shipmentsParent, styles.shipmentsFlexBox]}>
+            <View style={[styles.shipments1, styles.shipmentsSpaceBlock]}>
+              <View style={[styles.shipmentsInner, styles.switchFlexBox]}>
+                <View>
+                  <View style={styles.switchFlexBox}>
+                    <Text
+                      style={[styles.oceanExport, styles.oceanExportTypo]}
+                    >{`Ocean Export `}</Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View style={[styles.shipments1, styles.shipmentsSpaceBlock]}>
+              <View style={[styles.shipmentsInner, styles.switchFlexBox]}>
+                <View>
+                  <View style={styles.switchFlexBox}>
+                    <Text
+                      style={[styles.polGateCutOff, styles.oceanExportTypo]}
+                    >
+                      PoL Gate Cut-off Today
+                    </Text>
+                  </View>
+                  <Text
+                    style={[styles.showsAllShipments, styles.inSelectedTypo]}
+                  >
+                    Shows all shipments where Gate Cut-Off is today
+                  </Text>
+                </View>
+                <View style={[styles.switch, styles.switchFlexBox]}>
+                  <View style={styles.halo} />
+                  <View style={styles.switchShadowBox}>
+                    <View style={styles.switchNobdefaultChild} />
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View style={[styles.shipments1, styles.shipmentsSpaceBlock]}>
+              <View style={[styles.shipmentsInner, styles.switchFlexBox]}>
+                <View>
+                  <View style={styles.switchFlexBox}>
+                    <Text
+                      style={[styles.polGateCutOff, styles.oceanExportTypo]}
+                    >
+                      SI Cut-off Today
+                    </Text>
+                  </View>
+                  <Text
+                    style={[styles.showsAllShipments, styles.inSelectedTypo]}
+                  >
+                    Shows all shipments where Gate Cut-Off is today
+                  </Text>
+                </View>
+                <View style={[styles.switch, styles.switchFlexBox]}>
+                  <View style={styles.halo} />
+                  <View style={styles.switchShadowBox}>
+                    <View style={styles.switchNobdefaultChild} />
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View style={[styles.shipments1, styles.shipmentsSpaceBlock]}>
+              <View style={[styles.shipmentsInner, styles.switchFlexBox]}>
+                <View>
+                  <View style={styles.switchFlexBox}>
+                    <Text
+                      style={[styles.polGateCutOff, styles.oceanExportTypo]}
+                    >
+                      Loading Today
+                    </Text>
+                  </View>
+                  <Text
+                    style={[styles.showsAllShipments, styles.inSelectedTypo]}
+                  >
+                    Shows all shipments where Gate Cut-Off is today
+                  </Text>
+                </View>
+                <View style={[styles.switch, styles.switchFlexBox]}>
+                  <View style={styles.halo} />
+                  <View style={styles.switchShadowBox}>
+                    <View style={styles.switchNobdefaultChild} />
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View style={styles.frameWrapper}>
+          <View style={[styles.shipmentsParent, styles.shipmentsFlexBox]}>
+            <View style={[styles.shipments1, styles.shipmentsSpaceBlock]}>
+              <View style={[styles.shipmentsInner, styles.switchFlexBox]}>
+                <View>
+                  <View style={styles.switchFlexBox}>
+                    <Text style={[styles.oceanExport, styles.oceanExportTypo]}>
+                      Ocean Import
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View style={[styles.shipments1, styles.shipmentsSpaceBlock]}>
+              <View style={[styles.shipmentsInner, styles.switchFlexBox]}>
+                <View>
+                  <View style={styles.switchFlexBox}>
+                    <Text
+                      style={[styles.polGateCutOff, styles.oceanExportTypo]}
+                    >
+                      Shipments Loading Today
+                    </Text>
+                  </View>
+                  <Text
+                    style={[styles.showsAllShipments, styles.inSelectedTypo]}
+                  >
+                    Shows all shipments where Gate Cut-Off is today
+                  </Text>
+                </View>
+                <View style={[styles.switch, styles.switchFlexBox]}>
+                  <View style={styles.halo} />
+                  <View style={styles.switchShadowBox}>
+                    <View style={styles.switchNobdefaultChild} />
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View style={[styles.shipments1, styles.shipmentsSpaceBlock]}>
+              <View style={[styles.shipmentsInner, styles.switchFlexBox]}>
+                <View>
+                  <View style={styles.switchFlexBox}>
+                    <Text
+                      style={[styles.polGateCutOff, styles.oceanExportTypo]}
+                    >
+                      Shipments Arriving Today
+                    </Text>
+                  </View>
+                  <Text
+                    style={[styles.showsAllShipments, styles.inSelectedTypo]}
+                  >
+                    Shows all shipments where Gate Cut-Off is today
+                  </Text>
+                </View>
+                <View style={[styles.switch, styles.switchFlexBox]}>
+                  <View style={styles.halo} />
+                  <View style={styles.switchShadowBox}>
+                    <View style={styles.switchNobdefaultChild} />
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View style={[styles.shipments1, styles.shipmentsSpaceBlock]}>
+              <View style={[styles.shipmentsInner, styles.switchFlexBox]}>
+                <View>
+                  <View style={styles.switchFlexBox}>
+                    <Text
+                      style={[styles.polGateCutOff, styles.oceanExportTypo]}
+                    >
+                      CAN Pending
+                    </Text>
+                  </View>
+                  <Text
+                    style={[styles.showsAllShipments, styles.inSelectedTypo]}
+                  >
+                    Shows all shipments where Gate Cut-Off is today
+                  </Text>
+                </View>
+                <View style={[styles.switch, styles.switchFlexBox]}>
+                  <View style={styles.halo} />
+                  <View style={styles.switchShadowBox}>
+                    <View style={styles.switchNobdefaultChild} />
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View style={[styles.shipments1, styles.shipmentsSpaceBlock]}>
+              <View style={[styles.shipmentsInner, styles.switchFlexBox]}>
+                <View>
+                  <View style={styles.switchFlexBox}>
+                    <Text
+                      style={[styles.polGateCutOff, styles.oceanExportTypo]}
+                    >{`DO Release Pending `}</Text>
+                  </View>
+                  <Text
+                    style={[styles.showsAllShipments, styles.inSelectedTypo]}
+                  >
+                    Shows all shipments where Gate Cut-Off is today
+                  </Text>
+                </View>
+                <View style={[styles.switch, styles.switchFlexBox]}>
+                  <View style={styles.halo} />
+                  <View style={styles.switchShadowBox}>
+                    <View style={styles.switchNobdefaultChild} />
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  houseTypo: {
-    textAlign: 'center',
-    color: Color.shadesBlack,
-    fontFamily: FontFamily.robotoRegular,
-    letterSpacing: 0,
-    fontSize: FontSize.textXlSemibold_size,
+  shipmentsShadowBox: {
+    shadowOpacity: 1,
+    elevation: 4,
+    shadowRadius: 4,
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
   },
-  statusBar: {
-    height: 44,
-    width: 428,
+  shipmentsFlexBox: {
+    justifyContent: "center",
+    alignItems: "center",
   },
-  statusBarChild: {
-    borderRadius: Border.br_xl,
-    backgroundColor: Color.colorWhitesmoke_100,
-    borderColor: Color.colorDarkgray_100,
-    borderWidth: 1,
-    width: 283,
-    height: 25,
-    marginLeft: 10,
-    borderStyle: 'solid',
-  },
-  shareNodes: {
-    marginLeft: 10,
-  },
-  statusBar1: {
-    backgroundColor: Color.colorAliceblue_300,
-    borderColor: Color.colorWhitesmoke_100,
-    borderBottomWidth: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
+  shipmentsSpaceBlock: {
     padding: Padding.p_3xs,
-    borderStyle: 'solid',
-    width: 428,
-  },
-  statusBarParent: {
     backgroundColor: Color.white,
   },
+  switchFlexBox: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  inSelectedTypo: {
+    height: 18,
+    display: "flex",
+    color: Color.secondaryGrey400,
+    lineHeight: 28,
+    fontSize: FontSize.size_xs,
+    textAlign: "left",
+    fontFamily: FontFamily.circularStd,
+    fontWeight: "500",
+    alignItems: "center",
+  },
+  oceanExportTypo: {
+    fontFamily: FontFamily.textXlSemibold,
+    fontWeight: "600",
+    lineHeight: 26,
+    letterSpacing: 0,
+    textAlign: "left",
+  },
+  selectUpto2: {
+    lineHeight: 20,
+    textAlign: "left",
+    fontFamily: FontFamily.circularStd,
+    fontWeight: "500",
+    color: Color.primaryBlue500,
+    fontSize: FontSize.sectionSubtitleFontSize4Default_size,
+  },
+  inSelected: {
+    width: 238,
+  },
+  shipmentsInner: {
+    width: 390,
+  },
+  shipments: {
+    borderRadius: Border.br_9xs,
+    shadowColor: "rgba(25, 29, 49, 0.25)",
+    alignSelf: "stretch",
+    shadowOpacity: 1,
+    elevation: 4,
+    shadowRadius: 4,
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+  },
+  shipmentsWrapper: {
+    marginTop: 10,
+    alignSelf: "stretch",
+  },
+  oceanExport: {
+    fontSize: FontSize.size_base,
+    color: Color.primaryBlue500,
+    fontFamily: FontFamily.textXlSemibold,
+    fontWeight: "600",
+    lineHeight: 26,
+    letterSpacing: 0,
+  },
+  shipments1: {
+    borderRadius: Border.br_3xs,
+  },
+  polGateCutOff: {
+    color: Color.colorGray_200,
+    fontFamily: FontFamily.textXlSemibold,
+    fontWeight: "600",
+    lineHeight: 26,
+    letterSpacing: 0,
+    fontSize: FontSize.sectionSubtitleFontSize4Default_size,
+  },
+  showsAllShipments: {
+    width: 318,
+  },
+  halo: {
+    marginTop: -15,
+    marginLeft: -26,
+    top: "50%",
+    left: "50%",
+    borderRadius: Border.br_4xl,
+    backgroundColor: Color.primaryBlue500,
+    width: 52,
+    height: 30,
+    opacity: 0,
+    zIndex: 0,
+    position: "absolute",
+  },
+  switchNobdefaultChild: {
+    height: "100%",
+    top: "0%",
+    right: "0%",
+    bottom: "0%",
+    left: "0%",
+    borderRadius: Border.br_base,
+    backgroundColor: Color.white,
+    position: "absolute",
+    width: "100%",
+  },
+  switchShadowBox: {
+    zIndex: 1,
+    width: 18,
+    shadowColor: "rgba(0, 35, 11, 0.2)",
+    borderRadius: Border.br_58xl,
+    height: 18,
+    shadowOpacity: 1,
+    elevation: 4,
+    shadowRadius: 4,
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    overflow: "hidden",
+  },
+  switch: {
+    backgroundColor: "#2e70e8",
+    justifyContent: "flex-end",
+    paddingLeft: Padding.p_5xl,
+    paddingTop: Padding.p_11xs,
+    paddingRight: Padding.p_11xs,
+    paddingBottom: Padding.p_11xs,
+    marginLeft: 10,
+    borderRadius: 10,
+  },
+  shipmentsParent: {
+    borderRadius: Border.br_3xs,
+    width: 428,
+  },
+  frameWrapper: {
+    width: 421,
+    paddingHorizontal: Padding.p_11xs,
+    paddingVertical: 0,
+    backgroundColor: Color.white,
+    marginTop: 10,
+    overflow: "hidden",
+  },
   frameParent: {
-    position: 'absolute',
     top: 0,
     left: 0,
+    shadowColor: "rgba(0, 0, 0, 0.25)",
     width: 428,
+    position: "absolute",
+    height: 926,
   },
   widgetSubscription: {
     backgroundColor: Color.colorWhitesmoke_200,
     flex: 1,
-    width: '100%',
+    overflow: "hidden",
     height: 926,
-    overflow: 'hidden',
+    width: "100%",
   },
 });
 

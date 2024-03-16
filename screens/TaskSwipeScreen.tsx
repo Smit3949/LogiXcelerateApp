@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, ScrollView} from 'react-native';
 // import {Image} from 'expo-image';
 import StatusBar1 from '../components/StatusBar1';
 import HouseSection1 from '../components/HouseSection1';
@@ -10,10 +10,11 @@ import {Color, FontSize, FontFamily, Border, Padding} from '../GlobalStyles';
 
 const TaskSwipeScreen = () => {
   return (
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
     <View style={styles.taskSwipeScreen}>
       <View style={styles.frameParent}>
         <View style={styles.statusBarParent}>
-          <View style={styles.statusBar}>
+          {/* <View style={styles.statusBar}>
             <StatusBar1
               cap={require('../assets/cap1.png')}
               wifi={require('../assets/wifi1.png')}
@@ -43,8 +44,8 @@ const TaskSwipeScreen = () => {
               timeStyleLeft="5.61%"
               timeWidth={62}
             />
-          </View>
-          <View style={styles.statusBar1}>
+          </View> */}
+          {/* <View style={styles.statusBar1}>
             <Text style={[styles.house, styles.houseTypo]}>house</Text>
             <View style={styles.statusBarChild} />
             <Text style={[styles.shareNodes, styles.houseTypo]}>
@@ -52,7 +53,7 @@ const TaskSwipeScreen = () => {
             </Text>
             <Text style={[styles.shareNodes, styles.houseTypo]}>square-9</Text>
             <Text style={[styles.shareNodes, styles.houseTypo]}>square-9</Text>
-          </View>
+          </View> */}
           <HouseSection1 />
         </View>
         <View style={styles.frameGroup}>
@@ -94,45 +95,45 @@ const TaskSwipeScreen = () => {
                   <View>
                     <View>
                       <View style={styles.anchorParent}>
-                        <Text style={[styles.anchor, styles.anchorTypo]}>
-                          anchor
+                        <Text style={[styles.anchor, styles.anchorTypo, styles.fontSizeSmall]}>
+                        Nhavasheva, IN
                         </Text>
                         <View style={styles.frameChild} />
                       </View>
-                      <View style={styles.frameWrapper1}>
+                      {/* <View style={styles.frameWrapper1}>
                         <View>
                           <Text
                             style={[styles.etaDammamSadmn, styles.textTypo]}>
                             Nhavasheva, IN
                           </Text>
                         </View>
-                      </View>
+                      </View> */}
                     </View>
                   </View>
                   <View style={styles.timelinePlaceOfCarrierRe1}>
                     <View>
                       <View style={styles.anchorParent}>
-                        <Text style={[styles.anchor, styles.anchorTypo]}>
-                          anchor
+                        <Text style={[styles.anchor, styles.anchorTypo, styles.fontSizeSmall]}>
+                        Jebelali, AJ
                         </Text>
                         <View style={styles.frameChild} />
                       </View>
-                      <View style={styles.frameWrapper1}>
+                      {/* <View style={styles.frameWrapper1}>
                         <View>
                           <Text
                             style={[styles.etaDammamSadmn, styles.textTypo]}>
                             via Jebelali, AJ
                           </Text>
                         </View>
-                      </View>
+                      </View> */}
                     </View>
                   </View>
                   <View style={styles.timelinePlaceOfCarrierRe2}>
                     <View>
-                      <Text style={[styles.anchor, styles.anchorTypo]}>
-                        anchor
+                      <Text style={[styles.anchor, styles.anchorTypo, , styles.fontSizeSmall]}>
+                      Dammam, SA
                       </Text>
-                      <View style={styles.frameWrapper1}>
+                      {/* <View style={styles.frameWrapper1}>
                         <View>
                           <Text
                             style={[
@@ -140,7 +141,7 @@ const TaskSwipeScreen = () => {
                               styles.textTypo,
                             ]}>{`Dammam, SA `}</Text>
                         </View>
-                      </View>
+                      </View> */}
                     </View>
                   </View>
                 </View>
@@ -152,21 +153,15 @@ const TaskSwipeScreen = () => {
             <View style={[styles.mainContainerlistToday, styles.mainLayout]}>
               <View style={[styles.mainContainerlistToday1, styles.mainLayout]}>
                 <View style={styles.anchorParent}>
-                  <View style={styles.iconOutlinedTags}>
-                    <Text style={[styles.receipt, styles.anchorTypo]}>
-                      receipt
-                    </Text>
-                  </View>
                   <View style={styles.shipmentWorkflowWrapper}>
                     <Text style={[styles.shipmentWorkflow, styles.textTypo]}>
                       Shipment Workflow
                     </Text>
-                  </View>
-                </View>
-                <BookingConfirmationContainer
-                  statusMessage="Booking Confirmed"
-                  bookingDetailsText="Actual : Fri 17 Nov, 12:30 PM"
-                />
+                    <View style={styles.lineBreak} ></View> 
+                    <BookingConfirmationContainer
+                      statusMessage="Booking Confirmed"
+                      bookingDetailsText="Actual : Fri 17 Nov, 12:30 PM"
+                    />
                 <ContainerStep
                   shipmentStatus="Gated in at PoL"
                   statusDescription="Estimated : "
@@ -183,6 +178,10 @@ const TaskSwipeScreen = () => {
                   shipmentStatus="Arrived at PoD"
                   statusDescription="Actual : Fri 17 Nov, 12:30 PM"
                 />
+                  </View>
+                  
+                </View>
+                
                 <View style={styles.mainContainerlistTodayChild} />
               </View>
             </View>
@@ -190,16 +189,23 @@ const TaskSwipeScreen = () => {
         </View>
       </View>
     </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  lineBreak: {
+    height: 8, // Adjust the height as needed for your spacing preference
+  },
   houseTypo: {
     color: Color.shadesBlack,
     letterSpacing: 0,
     fontSize: FontSize.textXlSemibold_size,
     textAlign: 'center',
     fontFamily: FontFamily.robotoRegular,
+  },
+  fontSizeSmall: {
+    fontSize: 13,
   },
   locationDotTypo: {
     textTransform: 'uppercase',
@@ -210,7 +216,7 @@ const styles = StyleSheet.create({
   },
   textTypo: {
     fontFamily: FontFamily.robotoMedium,
-    fontWeight: '500',
+    fontWeight: '900',
   },
   tue02JanTypo: {
     lineHeight: 20,
@@ -332,7 +338,7 @@ const styles = StyleSheet.create({
   frameChild: {
     borderRadius: Border.br_11xs,
     backgroundColor: Color.secondaryGrey400,
-    width: 100,
+    width: 20,
     height: 2,
     marginLeft: 10,
   },
@@ -364,6 +370,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: Padding.p_mini,
     paddingVertical: Padding.p_3xs,
     overflow: 'hidden',
+    height:100,
+    width: 390,
   },
   frameWrapper: {
     marginTop: 10,
@@ -427,6 +435,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 926,
     overflow: 'hidden',
+  },
+  scrollContainer: {
+    flexGrow: 1,
   },
 });
 

@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {Text, StyleSheet, View} from 'react-native';
+import {Text, StyleSheet, View, ScrollView} from 'react-native';
 import {Padding, FontSize, FontFamily, Color, Border} from '../GlobalStyles';
 
 export type SectionInvoicesStatusType = {
@@ -24,13 +24,14 @@ const SectionInvoicesStatus = ({
   }, [propWidth]);
 
   return (
+    <ScrollView horizontal={true} contentContainerStyle={styles.scrollContainer}>
     <View style={[styles.frameParent, frameView2Style]}>
       <View style={[styles.statusWrapper, styles.wrapperSpaceBlock]}>
         <Text style={[styles.status, styles.statusTypo]}>{carStatus}</Text>
       </View>
       <View style={[styles.shipmentDetailsWrapper, styles.wrapperSpaceBlock]}>
         <Text style={[styles.shipmentDetails, styles.statusTypo]}>
-          Shipment Details
+          Details
         </Text>
       </View>
       <View style={[styles.shipmentDetailsWrapper, styles.wrapperSpaceBlock]}>
@@ -41,24 +42,15 @@ const SectionInvoicesStatus = ({
       <View style={[styles.shipmentDetailsWrapper, styles.wrapperSpaceBlock]}>
         <Text style={[styles.shipmentDetails, styles.statusTypo]}>Customs</Text>
       </View>
-      <View style={[styles.shipmentDetailsWrapper, styles.wrapperSpaceBlock]}>
-        <Text style={[styles.shipmentDetails, styles.statusTypo]}>
-          Documents
-        </Text>
-      </View>
-      <View style={[styles.shipmentDetailsWrapper, styles.wrapperSpaceBlock]}>
-        <Text style={[styles.shipmentDetails, styles.statusTypo]}>Quotes</Text>
-      </View>
-      <View style={[styles.shipmentDetailsWrapper, styles.wrapperSpaceBlock]}>
-        <Text style={[styles.shipmentDetails, styles.statusTypo]}>
-          Invoices
-        </Text>
-      </View>
     </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    flexGrow: 1,
+  },
   wrapperSpaceBlock: {
     paddingVertical: Padding.p_7xs,
     paddingHorizontal: Padding.p_5xs,
@@ -94,6 +86,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
+    justifyContent : 'flex-start',
     shadowRadius: 4,
     elevation: 4,
     shadowOpacity: 1,

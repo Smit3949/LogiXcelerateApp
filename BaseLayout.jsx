@@ -12,6 +12,7 @@ import {setContext} from '@apollo/client/link/context';
 import NavigationBar from './screens/NavBar';
 import {NavigationContainer} from '@react-navigation/native';
 import {Route, Router} from 'react-router-native';
+import {SendbirdCalls} from '@sendbird/calls-react-native';
 
 export default function BaseLayout() {
   const [apolloClient, setApolloClient] = useState();

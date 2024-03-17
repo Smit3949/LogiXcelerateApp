@@ -279,7 +279,8 @@ function Basic() {
   );
 }
 
-const TaskSwipeScreen = () => {
+const TaskSwipeScreen = (props: any) => {
+  const {navigation} = props;
   return (
     // <ScrollView contentContainerStyle={styles.scrollContainer}>
     <View style={styles.taskSwipeScreen}>
@@ -328,7 +329,7 @@ const TaskSwipeScreen = () => {
           <HouseSection1 />
         </View>
         <View style={styles.frameGroup}>
-          <SectionInvoicesStatus carStatus="Status" />
+          <SectionInvoicesStatus navigate={navigation} carStatus="Status" />
           <View style={styles.partyDetailsParent}>
             <View style={styles.partyDetails}>
               <View style={styles.partyDetailsInner}>

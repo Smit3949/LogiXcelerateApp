@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {Text, StyleSheet, View} from 'react-native';
+import {Text, StyleSheet, View, TouchableOpacity} from 'react-native';
 import {Padding, FontSize, FontFamily, Color, Border} from '../GlobalStyles';
 
 export type SectionInvoicesStatusType = {
@@ -13,10 +13,7 @@ const getStyleValue = (key: string, value: string | number | undefined) => {
   if (value === undefined) return;
   return {[key]: value === 'unset' ? undefined : value};
 };
-const SectionInvoicesStatus = ({
-  carStatus,
-  propWidth,
-}: SectionInvoicesStatusType) => {
+const SectionInvoicesStatus = ({carStatus, propWidth, navigation}: any) => {
   const frameView2Style = useMemo(() => {
     return {
       ...getStyleValue('width', propWidth),
@@ -33,17 +30,22 @@ const SectionInvoicesStatus = ({
           Shipment Details
         </Text>
       </View>
-      <View style={[styles.shipmentDetailsWrapper, styles.wrapperSpaceBlock]}>
-        <Text style={[styles.shipmentDetails, styles.statusTypo]}>
-          Containers
-        </Text>
-      </View>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('Documents');
+        }}>
+        <View style={[styles.shipmentDetailsWrapper, styles.wrapperSpaceBlock]}>
+          <Text style={[styles.shipmentDetails, styles.statusTypo]}>
+            Documents
+          </Text>
+        </View>
+      </TouchableOpacity>
       <View style={[styles.shipmentDetailsWrapper, styles.wrapperSpaceBlock]}>
         <Text style={[styles.shipmentDetails, styles.statusTypo]}>Customs</Text>
       </View>
       <View style={[styles.shipmentDetailsWrapper, styles.wrapperSpaceBlock]}>
         <Text style={[styles.shipmentDetails, styles.statusTypo]}>
-          Documents
+          Containers
         </Text>
       </View>
       <View style={[styles.shipmentDetailsWrapper, styles.wrapperSpaceBlock]}>

@@ -1,5 +1,11 @@
 import * as React from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import HouseSection from '../components/HouseSection';
 import SearchFilterContainer from '../components/SearchFilterContainer';
 import SectionWithComments from '../components/SectionWithComments';
@@ -20,56 +26,82 @@ const ShipmentListViewTopNavigat = (props: any) => {
           <View style={styles.statusBarParent}>
             {/* <SearchFilterContainer /> */}
             {/* <Link to="/shipment"> */}
-            <SectionWithComments
-              onPress={() => navigation.navigate('ActivityScreen')}
-              mblNumber="MBL # HLCUBO12312BAXD9"
-              shipmentNumber="JOB/23-24/0000001"
-            />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('TaskSwipeScreen')}>
+              <SectionWithComments
+                mblNumber="MBL # HLCUBO12312BAXD9"
+                shipmentNumber="JOB/23-24/0000001"
+              />
+            </TouchableOpacity>
             {/* </Link> */}
-            <SectionForm />
-            <SectionWithComments
-              mblNumber="MBL # HWEUBO12312BAXD9"
-              shipmentNumber="JOB/23-24/5670001"
-            />
-            <SectionWithComments
-              mblNumber="MBL # KLCUBO12312BAXD9"
-              shipmentNumber="JOB/23-24/4300001"
-            />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('TaskSwipeScreen')}>
+              <SectionWithComments
+                mblNumber="MBL # HWEUBO12312BAXD9"
+                shipmentNumber="JOB/23-24/5670001"
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('TaskSwipeScreen')}>
+              <SectionWithComments
+                mblNumber="MBL # KLCUBO12312BAXD9"
+                shipmentNumber="JOB/23-24/4300001"
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('TaskSwipeScreen')}>
+              <SectionWithComments
+                mblNumber="MBL # THCUBO12312BAXD9"
+                shipmentNumber="JOB/23-24/1200001"
+              />
+            </TouchableOpacity>
 
-            <SectionWithComments
-              mblNumber="MBL # THCUBO12312BAXD9"
-              shipmentNumber="JOB/23-24/1200001"
-            />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('TaskSwipeScreen')}>
+              <SectionWithComments
+                mblNumber="MBL # UYCUBO12312BAXD9"
+                shipmentNumber="JOB/23-24/4350001"
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('TaskSwipeScreen')}>
+              <SectionWithComments
+                mblNumber="MBL # UYCUBO12312BAXD9"
+                shipmentNumber="JOB/23-24/4350001"
+              />
+            </TouchableOpacity>
 
-            <SectionWithComments
-              mblNumber="MBL # UYCUBO12312BAXD9"
-              shipmentNumber="JOB/23-24/4350001"
-            />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('TaskSwipeScreen')}>
+              <SectionWithComments
+                mblNumber="MBL # UYCUBO12312BAXD9"
+                shipmentNumber="JOB/23-24/4350001"
+              />
+            </TouchableOpacity>
 
-            <SectionWithComments
-              mblNumber="MBL # UYCUBO12312BAXD9"
-              shipmentNumber="JOB/23-24/4350001"
-            />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('TaskSwipeScreen')}>
+              <SectionWithComments
+                mblNumber="MBL # UYCUBO12312BAXD9"
+                shipmentNumber="JOB/23-24/4350001"
+              />
+            </TouchableOpacity>
 
-            <SectionWithComments
-              mblNumber="MBL # UYCUBO12312BAXD9"
-              shipmentNumber="JOB/23-24/4350001"
-            />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('TaskSwipeScreen')}>
+              <SectionWithComments
+                mblNumber="MBL # UYCUBO12312BAXD9"
+                shipmentNumber="JOB/23-24/4350001"
+              />
+            </TouchableOpacity>
 
-            <SectionWithComments
-              mblNumber="MBL # UYCUBO12312BAXD9"
-              shipmentNumber="JOB/23-24/4350001"
-            />
-
-            <SectionWithComments
-              mblNumber="MBL # UYCUBO12312BAXD9"
-              shipmentNumber="JOB/23-24/4350001"
-            />
-
-            <SectionWithComments
-              mblNumber="MBL # UYCUBO12312BAXD9"
-              shipmentNumber="JOB/23-24/4350001"
-            />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('TaskSwipeScreen')}>
+              <SectionWithComments
+                mblNumber="MBL # UYCUBO12312BAXD9"
+                shipmentNumber="JOB/23-24/4350001"
+              />
+            </TouchableOpacity>
           </View>
         </View>
       </View>
